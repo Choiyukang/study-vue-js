@@ -28,3 +28,23 @@ Material Icon을 VS코드로 가져온다.
 
 - Atom Keymap
 아톰에서 즐겨사용 하는 키보드 단축키를 사용할 수 있다.
+
+
+
+- 객체 동작,속성 재정의 API ('대상객체' 객체의 속성{정의할 내용})
+        Object.defineProperty(viewModel, 'str', {
+            //속성에 접근했을 때의 동작을 정의
+            get: function () {
+                console.log('접근');
+            },
+            //속성에 값을 할당했을 떄의 동작을 정의
+            set: function (newValue) {
+                console.log('할당',newValue);
+                div.innerHTML = newValue;
+            }
+        });
+
+- 즉시 실행 함수 
+(function () {
+    //실행함수
+})();
