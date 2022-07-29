@@ -48,3 +48,46 @@ Material Icon을 VS코드로 가져온다.
 (function () {
     //실행함수
 })();
+
+- 인스턴스에서 사용할 수 있는 속성 API 
+new Vue({
+    el : 
+    , template:
+    , data:
+    , methods:
+    , created:
+    , watch: 
+})
+
+-component 등록
+        // Vue.component('컴포넌트 이름', {
+        //     // '컴포넌트내용'
+        // })
+-전역컴포넌트
+        Vue.component('app-header',{
+            template:'<h1>Header</h1>'
+        });
+-지역컴포넌트
+        new Vue({
+            el:'#app'
+            //지역 컴포넌트 등록 방식
+            ,  components:{
+                // 'key:value'
+                //컴포넌트 이름 : 컴포넌트 내용
+                'app-footer':{
+                    template: '<footer>footer</footer>'
+                }
+            }   
+        })
+        
+-하위 컴포넌트 데이터 전달(props)
+    <div id="app">
+        <!-- <app-header v-bind:프롭스 속성 이름 ="상위 컴포넌트의 데이터 이름"></app-header> -->
+        <app-header v-bind:propsdata="message"></app-header>
+    </div>
+    var appHeader = {
+        'app-header': {
+            template: '<h1>header</h1>'
+            , props:['propsdata']
+        }
+    };
