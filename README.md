@@ -91,3 +91,5 @@ new Vue({
             , props:['propsdata']
         }
     };
+
+-$emit() 이벤트 전달
