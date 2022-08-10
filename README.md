@@ -93,3 +93,5 @@ new Vue({
     };
 
 -$emit() 이벤트 전달
+
+-Vue CLI로 import 하여 사용 가능
