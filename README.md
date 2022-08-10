@@ -32,6 +32,7 @@ Material Icon을 VS코드로 가져온다.
 
 
 - 객체 동작,속성 재정의 API ('대상객체' 객체의 속성{정의할 내용})
+```c
         Object.defineProperty(viewModel, 'str', {
             //속성에 접근했을 때의 동작을 정의
             get: function () {
@@ -43,13 +44,16 @@ Material Icon을 VS코드로 가져온다.
                 div.innerHTML = newValue;
             }
         });
-
+```
 - 즉시 실행 함수 
+```c
 (function () {
     //실행함수
 })();
+```
 
 - 인스턴스에서 사용할 수 있는 속성 API 
+```c
 new Vue({
     el : 
     , template:
@@ -58,16 +62,22 @@ new Vue({
     , created:
     , watch: 
 })
+```
 
 -component 등록
-        // Vue.component('컴포넌트 이름', {
-        //     // '컴포넌트내용'
-        // })
+```c
+        Vue.component('컴포넌트 이름', {
+            // '컴포넌트내용'
+        })
+```
 -전역컴포넌트
+```c
         Vue.component('app-header',{
             template:'<h1>Header</h1>'
         });
+```
 -지역컴포넌트
+```c
         new Vue({
             el:'#app'
             //지역 컴포넌트 등록 방식
@@ -79,8 +89,9 @@ new Vue({
                 }
             }   
         })
-        
+```
 -하위 컴포넌트 데이터 전달(props)
+```c
     <div id="app">
         <!-- <app-header v-bind:프롭스 속성 이름 ="상위 컴포넌트의 데이터 이름"></app-header> -->
         <app-header v-bind:propsdata="message"></app-header>
@@ -91,7 +102,7 @@ new Vue({
             , props:['propsdata']
         }
     };
-
+```
 -$emit() 이벤트 전달
 
 -Vue CLI로 import 하여 사용 가능
