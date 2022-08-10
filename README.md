@@ -90,6 +90,10 @@ new Vue({
             }   
         })
 ```
+
+# 상위 -> 하위 : props로 전달
+# 하위 -> 상위 : event로 전달
+
 -하위 컴포넌트 데이터 전달(props)
 ```c
     <div id="app">
@@ -102,6 +106,53 @@ new Vue({
             , props:['propsdata']
         }
     };
+```
+
+-상위 컴포넌트 데이터 전달(event)
+```c
+    <div id="app">
+        <p>{{num}}</p>
+        <!-- <app-header v-on:하위컴포넌트에서 발생한 이벤트 이름="상위컴포넌트의 메서드"></app-header> -->
+        <app-header v-on:pass="logText"></app-header>
+        <app-content v-on:increase="increaseNumber"></app-content>
+    </div>
+
+         var appHeader = {
+            template: '<button v-on:click="passEvent">클릭!</button>',
+            methods: {
+                passEvent: function(){
+                    this.$emit('pass');
+                }
+            }
+        }
+        var appContent = {
+            template: '<button v-on:click="addNumber">add</button>',
+            methods:{
+                addNumber : function(){
+                    this.$emit('increase')
+                }
+            }
+        }
+
+        var vm  = new Vue({
+            el: '#app'
+            , components: {
+                'app-header': appHeader,
+                'app-content':appContent
+            },
+            methods:{
+                logText:function(){
+                    console.log('hi');
+                },
+                increaseNumber :function(){
+                    this.num = ++this.num;
+                }
+                
+            },
+            data:{
+                num : 10
+            }
+        });
 ```
 -$emit() 이벤트 전달
 
