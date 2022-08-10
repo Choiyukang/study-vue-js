@@ -1,12 +1,14 @@
 <template>
-  <div>
-
-  </div>
+  {{str}}
 </template>
 
 <script>
 export default {
-
+    data:function () {
+        return {
+            str : 'hi'
+        }
+    }
 }
 </script>
 
