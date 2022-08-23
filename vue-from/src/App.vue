@@ -9,7 +9,10 @@
         <input type="password" id="password" v-model="password">
       </div>
       <button type="submit">login</button>
+      <a v-on:click="getUsers">btn</a>
+      <div>{{users}}</div>
     </form>
+    
 </template>
 
 <script>
@@ -19,7 +22,8 @@ export default {
   data: function(){
     return{
       username:'',
-      password:''
+      password:'',
+      users:[]
     }
   },
   methods:{
@@ -37,6 +41,27 @@ export default {
       .catch(function(response){
         console.log(response);
       })
+    },
+    getUsers:function(){
+      // var url1 = "http://localhost:63204/api/getusers";
+      // var url2 = "/api/getusers";
+      this.$axios.get('api/api/GetUsers')
+      .then(function(response){
+          console.log(response);
+          console.log(response.data);
+      })
+      .catch(function(error){
+        console.log(error);
+      })
+
+      // axios.get(url2)
+      // .then(function(response){
+      //     console.log(response);
+      //     console.log(response.data);
+      // })
+      // .catch(function(error){
+      //   console.log(error);
+      // })
     }
   }
 }
